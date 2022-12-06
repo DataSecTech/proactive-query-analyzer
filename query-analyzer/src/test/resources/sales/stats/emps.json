@@ -1,0 +1,177 @@
+{
+  "totalRows": 5,
+  "name": "EMPS",
+  "sensitiveColumns": {},
+  "columnStatisticsMap": {
+    "EMPNO": {
+      "name": "EMPNO",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 5,
+      "distinct": 4,
+      "min": "100",
+      "max": "130",
+      "histogram": null
+    },
+    "NAME": {
+      "name": "NAME",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 5,
+      "distinct": 5,
+      "min": "Alice",
+      "max": "Wilma",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "EMPS.NAME",
+        "bucketMap": {
+          "a": {
+            "min": "Alice",
+            "max": "Alice",
+            "noOfItems": 1
+          },
+          "e": {
+            "min": "Eric",
+            "max": "Eric",
+            "noOfItems": 1
+          },
+          "f": {
+            "min": "Fred",
+            "max": "Fred",
+            "noOfItems": 1
+          },
+          "w": {
+            "min": "Wilma",
+            "max": "Wilma",
+            "noOfItems": 1
+          },
+          "j": {
+            "min": "John",
+            "max": "John",
+            "noOfItems": 1
+          }
+        }
+      }
+    },
+    "DEPTNO": {
+      "name": "DEPTNO",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 5,
+      "distinct": 3,
+      "min": "10",
+      "max": "40",
+      "histogram": null
+    },
+    "GENDER": {
+      "name": "GENDER",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 5,
+      "distinct": 3,
+      "min": "",
+      "max": "M",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "EMPS.GENDER",
+        "bucketMap": {
+          "": {
+            "min": "",
+            "max": "",
+            "noOfItems": 1
+          },
+          "f": {
+            "min": "F",
+            "max": "F",
+            "noOfItems": 2
+          },
+          "m": {
+            "min": "M",
+            "max": "M",
+            "noOfItems": 2
+          }
+        }
+      }
+    },
+    "CITY": {
+      "name": "CITY",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 5,
+      "distinct": 3,
+      "min": "",
+      "max": "Vancouver",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "EMPS.CITY",
+        "bucketMap": {
+          "": {
+            "min": "",
+            "max": "",
+            "noOfItems": 2
+          },
+          "s": {
+            "min": "San Francisco",
+            "max": "San Francisco",
+            "noOfItems": 1
+          },
+          "v": {
+            "min": "Vancouver",
+            "max": "Vancouver",
+            "noOfItems": 2
+          }
+        }
+      }
+    },
+    "EMPID": {
+      "name": "EMPID",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 5,
+      "distinct": 4,
+      "min": "1",
+      "max": "30",
+      "histogram": null
+    },
+    "AGE": {
+      "name": "AGE",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 3,
+      "distinct": 3,
+      "min": "5",
+      "max": "80",
+      "histogram": null
+    },
+    "SLACKER": {
+      "name": "SLACKER",
+      "isPii": false,
+      "dataType": "BOOLEAN",
+      "notNull": 3,
+      "distinct": 2,
+      "min": "false",
+      "max": "true",
+      "histogram": null
+    },
+    "MANAGER": {
+      "name": "MANAGER",
+      "isPii": false,
+      "dataType": "BOOLEAN",
+      "notNull": 5,
+      "distinct": 2,
+      "min": "false",
+      "max": "true",
+      "histogram": null
+    },
+    "JOINEDAT": {
+      "name": "JOINEDAT",
+      "isPii": false,
+      "dataType": "DATE",
+      "notNull": 5,
+      "distinct": 5,
+      "min": "1996-08-03",
+      "max": "2007-01-01",
+      "histogram": null
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "totalRows": 3,
+  "name": "DEPTS",
+  "sensitiveColumns": {},
+  "columnStatisticsMap": {
+    "DEPTNO": {
+      "name": "DEPTNO",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 3,
+      "distinct": 3,
+      "min": "10",
+      "max": "30",
+      "histogram": null
+    },
+    "NAME": {
+      "name": "NAME",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 3,
+      "distinct": 3,
+      "min": "Accounts",
+      "max": "Sales",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "DEPTS.NAME",
+        "bucketMap": {
+          "a": {
+            "min": "Accounts",
+            "max": "Accounts",
+            "noOfItems": 1
+          },
+          "s": {
+            "min": "Sales",
+            "max": "Sales",
+            "noOfItems": 1
+          },
+          "m": {
+            "min": "Marketing",
+            "max": "Marketing",
+            "noOfItems": 1
+          }
+        }
+      }
+    }
+  }
+}

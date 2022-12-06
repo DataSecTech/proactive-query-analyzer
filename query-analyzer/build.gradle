@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+project.archivesBaseName = 'proactive-query-analyzer'
+group = 'com.datasectech.queryanalyzer'
+version = sdlQueryAnalyzerVersion
+
+application {
+    mainClass = System.getProperty("mainClass", "com.datasectech.queryanalyzer.cli.QueryAnalyzerApp")
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation("org.apache.calcite:calcite-core:$calciteVersion")
+    implementation("org.apache.calcite:calcite-example-csv:$calciteVersion")
+
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+
+    implementation("redis.clients:jedis:$jedisVersion")
+    implementation("com.fiftyonred:mock-jedis:$mockJedisVersion")  // We use this mock library to print redis commands
+
+    implementation('com.mitchtalmadge:ascii-data:1.4.0')
+
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+
+    implementation("info.picocli:picocli:$picocliVersion")
+    annotationProcessor("info.picocli:picocli-codegen:$picocliVersion")
+
+    testImplementation("junit:junit:${junitVersion}")
+    testImplementation('org.mockito:mockito-core:3.+')
+}
+
+compileJava {
+    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
+}
+
+// Consider keeping the individual jar files
+jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    // Gets added by some package, which forces our **fat** jar to be invalid
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    manifest {
+        attributes(
+                'Main-Class': 'com.datasectech.queryanalyzer.cli.QueryAnalyzerApp'
+        )
+    }
+}
