@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: proactive_query_analyzer
+      MYSQL_USER: proactive_query_analyzer
+      MYSQL_PASSWORD: ${MYSQL_PROACTIVE_QUERY_ANALYZER_PASSWORD}
+    volumes:
+      - "${VOLUME_BASE}/mysql:/var/lib/mysql"
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u proactive_query_analyzer --password=$$MYSQL_PROACTIVE_QUERY_ANALYZER_PASSWORD
+
+  redis:
+    image: redis
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+
+  webserver:
+    image: secure-dl/query-analyzer-webservice:${SDL_QUERY_ANALYZER_VERSION}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${SDL_QUERY_ANALYZER_PORT}:8080"
+
+    environment:
+      -SPRING_APPLICATION_JSON: '{
+                "spring.datasource.url": "jdbc:mysql://db:3306/proactive_query_analyzer",
+                "spring.datasource.username": "proactive_query_analyzer",
+                "spring.datasource.password": "${MYSQL_PROACTIVE_QUERY_ANALYZER_PASSWORD}",
+                "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
+                "spring.jpa.hibernate.ddl-auto": "validate",
+                "spring.jpa.show-sql": true,
+                "secure-dl.redis.host": "redis",
+                "secure-dl.redis.port": 6379,
+                "secure-dl.redis.db-index": 0,
+                "secure-dl.redis.ssl": false,
+                "secure-dl.redis.key-prefix": "AnalyzerDB"
+              }'
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

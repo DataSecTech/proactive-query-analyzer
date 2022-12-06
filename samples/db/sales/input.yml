@@ -1,0 +1,45 @@
+db:
+  calciteModel:       model-sales.yml
+  schema:             SALES
+  sensitiveColumns:
+    'emps.age' :      AGE
+    'emps.gender':    GENDER
+    'persons.email':  EMAIL
+    'login.email':    EMAIL
+
+queries:
+  plain-select-1:
+    SELECT * FROM emps
+  plain-select-2:
+    SELECT * FROM depts
+  plain-select-3:
+    SELECT * FROM sdepts
+
+  filter-1:
+    SELECT * FROM emps WHERE deptno = 40
+  filter-2:
+    SELECT * FROM emps WHERE deptno <> 40
+
+  join-inner-1:
+    SELECT e.name, d.name FROM emps AS e JOIN depts AS d on e.deptno = d.deptno
+  join-inner-2:
+    SELECT * FROM emps AS e JOIN depts AS d on e.deptno = d.deptno
+
+  join-inner-3:
+    SELECT * FROM persons AS p JOIN login AS l on p.email = l.email
+
+  join-left-1:
+    SELECT * FROM emps AS e LEFT JOIN depts AS d on e.deptno = d.deptno
+
+  join-right-1:
+    SELECT * FROM emps AS e RIGHT JOIN depts AS d on e.deptno = d.deptno
+  join-right-2:
+    SELECT * FROM emps AS e RIGHT JOIN sdepts AS s on e.deptno = s.deptno
+
+  join-full-1:
+    SELECT * FROM emps AS e FULL OUTER JOIN depts AS d on e.deptno = d.deptno
+
+  join-x-1:
+    select * from emps, depts
+  join-x-2:
+    select * from emps, depts, sdepts

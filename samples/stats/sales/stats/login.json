@@ -1,0 +1,62 @@
+{
+  "totalRows": 6,
+  "name": "LOGIN",
+  "sensitiveColumns": {},
+  "columnStatisticsMap": {
+    "EMAIL": {
+      "name": "EMAIL",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 6,
+      "distinct": 4,
+      "min": "carter@example.com",
+      "max": "root@example.com",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "LOGIN.EMAIL",
+        "bucketMap": {
+          "r": {
+            "min": "root@example.com",
+            "max": "root@example.com",
+            "noOfItems": 1
+          },
+          "c": {
+            "min": "carter@example.com",
+            "max": "carter@example.com",
+            "noOfItems": 1
+          },
+          "h": {
+            "min": "harold@example.com",
+            "max": "harold@example.com",
+            "noOfItems": 1
+          },
+          "j": {
+            "min": "john@example.com",
+            "max": "john@example.com",
+            "noOfItems": 3
+          }
+        }
+      }
+    },
+    "ACCESS_TIME": {
+      "name": "ACCESS_TIME",
+      "isPii": false,
+      "dataType": "DATE",
+      "notNull": 6,
+      "distinct": 5,
+      "min": "2020-10-10",
+      "max": "2020-10-15",
+      "histogram": null
+    },
+    "SUCCESS": {
+      "name": "SUCCESS",
+      "isPii": false,
+      "dataType": "INTEGER",
+      "notNull": 6,
+      "distinct": 2,
+      "min": "0",
+      "max": "1",
+      "histogram": null
+    }
+  }
+}

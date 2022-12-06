@@ -1,0 +1,24 @@
+subprojects {
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        provided
+    }
+
+    ext {
+        sdlQueryAnalyzerVersion = '0.1.0-SNAPSHOT'
+
+        calciteVersion = '1.21.0'
+        mockJedisVersion = '0.4.0'
+        jedisVersion = '3.0.1'  // Keeping this version low due to mock jedis issue
+
+        log4j2Version = '2.19.0'
+        jacksonVersion = '2.13.4'
+        picocliVersion = '4.6.3'
+
+        junitVersion = '4.13.2'
+    }
+}

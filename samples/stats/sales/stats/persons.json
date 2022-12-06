@@ -1,0 +1,87 @@
+{
+  "totalRows": 4,
+  "name": "PERSONS",
+  "sensitiveColumns": {},
+  "columnStatisticsMap": {
+    "NAME": {
+      "name": "NAME",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 4,
+      "distinct": 4,
+      "min": "Carter",
+      "max": "Root",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "PERSONS.NAME",
+        "bucketMap": {
+          "r": {
+            "min": "Root",
+            "max": "Root",
+            "noOfItems": 1
+          },
+          "c": {
+            "min": "Carter",
+            "max": "Carter",
+            "noOfItems": 1
+          },
+          "h": {
+            "min": "Harold",
+            "max": "Harold",
+            "noOfItems": 1
+          },
+          "j": {
+            "min": "John",
+            "max": "John",
+            "noOfItems": 1
+          }
+        }
+      }
+    },
+    "BIRTHDATE": {
+      "name": "BIRTHDATE",
+      "isPii": false,
+      "dataType": "DATE",
+      "notNull": 4,
+      "distinct": 4,
+      "min": "1980-03-09",
+      "max": "2001-01-01",
+      "histogram": null
+    },
+    "EMAIL": {
+      "name": "EMAIL",
+      "isPii": false,
+      "dataType": "VARCHAR",
+      "notNull": 4,
+      "distinct": 4,
+      "min": "carter@example.com",
+      "max": "root@example.com",
+      "histogram": {
+        "histogramType": "Frequency",
+        "columnName": "PERSONS.EMAIL",
+        "bucketMap": {
+          "r": {
+            "min": "root@example.com",
+            "max": "root@example.com",
+            "noOfItems": 1
+          },
+          "c": {
+            "min": "carter@example.com",
+            "max": "carter@example.com",
+            "noOfItems": 1
+          },
+          "h": {
+            "min": "harold@example.com",
+            "max": "harold@example.com",
+            "noOfItems": 1
+          },
+          "j": {
+            "min": "john@example.com",
+            "max": "john@example.com",
+            "noOfItems": 1
+          }
+        }
+      }
+    }
+  }
+}

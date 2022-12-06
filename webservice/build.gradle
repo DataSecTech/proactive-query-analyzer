@@ -1,0 +1,49 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+}
+
+project.archivesBaseName = 'proactive-query-analyzer-webservice'
+group = 'com.datasectech.queryanalyzer'
+version = sdlQueryAnalyzerVersion
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+    implementation "redis.clients:jedis:$jedisVersion"
+
+    implementation project(':query-analyzer')
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// From - https://stackoverflow.com/questions/30792268/loggerfactory-is-not-a-logback-loggercontext-but-logback-is-on-the-classpath
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+    }
+}
+
+bootRun {
+    jvmArgs = ["-Dspring.config.location=classpath:/application.properties,../config/application.properties"]
+}

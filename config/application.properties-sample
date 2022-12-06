@@ -1,0 +1,6 @@
+# Copy this file to `application.properties`
+# and fill up database information
+
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/<db_name>?autoReconnect=true&serverTimezone=<>
+spring.datasource.username=<db_user>
+spring.datasource.password=<db_user_password>

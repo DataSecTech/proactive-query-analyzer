@@ -1,0 +1,23 @@
+{
+  "sensitiveColumns": {
+    "emps.age": "AGE",
+    "emps.gender": "GENDER",
+    "persons.email": "EMAIL",
+    "login.email": "EMAIL"
+  },
+  "queries": {
+    "filter-eq-1": "SELECT * FROM emps WHERE deptno = 40",
+    "filter-eq-2": "SELECT age FROM emps WHERE deptno = 40",
+    "filter-eq-3": "SELECT age, gender FROM emps WHERE deptno = 40",
+    "filter-eq-4": "SELECT manager FROM emps WHERE deptno = 40",
+    "filter-eq-5": "SELECT slacker FROM emps WHERE deptno = 40",
+    "filter-eq-10": "SELECT * FROM emps WHERE age = 25 and deptno = 40",
+    "filter-eq-11": "SELECT * FROM emps WHERE age = 25 and deptno = 40 and empno = 100",
+    "filter-eq-12": "SELECT * FROM emps WHERE 1 = 1",
+    "filter-eq-13": "SELECT * FROM emps WHERE 1 = 0",
+    "filter-eq-14": "SELECT * FROM emps WHERE empno = empno",
+    "filter-eq-15": "SELECT * FROM emps WHERE empno = deptno",
+    "filter-or-1": "SELECT * FROM emps WHERE age = 80 or deptno = 20",
+    "filter-or-2": "SELECT * FROM emps WHERE age = 80 or deptno = 20 or empno = 100"
+  }
+}

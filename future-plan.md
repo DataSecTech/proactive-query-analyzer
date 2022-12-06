@@ -1,0 +1,2 @@
+- Upload multiple tables
+- Build inside docker to remove local gradle dependency
